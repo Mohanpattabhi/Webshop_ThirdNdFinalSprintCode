@@ -1,0 +1,108 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{categoryBean.doInit}" />
+	</f:metadata>
+
+<ui:composition template="/layout/template.xhtml">
+	<ui:define name="pageTitle">
+		<h:outputText value="WebShop" />
+	</ui:define>
+
+	<ui:define name="content">
+	 <h:form id="form1">
+            <p:growl id="messages" showDetail="true"/>
+            <p:panel header="Manage Categories" style="width: 400px;"> 
+                <p:panelGrid columns="2">
+                    <h:outputLabel for="name" value="CategoryName: " />
+                    <p:inputText  value="#{categoryBean.name}"/>
+                    
+                    <h:outputLabel for="code" value="Code: " />
+                    <p:inputText  value="#{categoryBean.code}"/>
+                    
+                    
+                    <h:outputLabel for="description" value="Description: " />
+                    <p:inputText  value="#{categoryBean.description}"/>
+
+                    <f:facet name="footer">
+                        <h:commandButton value="Add Category" action="#{categoryBean.addAction}"/>
+                    </f:facet>
+                </p:panelGrid>
+                <p:spacer height="30px;"/>
+                <p:dataTable value="#{categoryBean.categoryEntities}" var="category"  widgetVar="50" style="width: 60px;" editable="true">
+                    <f:facet name="header">  
+                        Category List  
+                    </f:facet>
+                    <p:ajax event="rowEdit" listener="#{categoryBean.onEdit}" update=":form1:messages" />  
+                    <p:ajax event="rowEditCancel" listener="#{categoryBean.onCancel}" update=":form1:messages" /> 
+                     <p:column rendered="false">
+                        <f:facet name="header">  
+                            <h:outputText value="Category Name" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{category.categoryId}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{category.categoryId}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Category Name" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{category.name}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{category.name}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Category Code" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{category.code}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{category.code}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                    
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Category Description" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{category.description}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{category.description}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+ 
+                       <p:column headerText="Options" style="width:50px">  
+                        <p:rowEditor />  
+                    </p:column> 
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+</ui:define>
+</ui:composition>
+</html>

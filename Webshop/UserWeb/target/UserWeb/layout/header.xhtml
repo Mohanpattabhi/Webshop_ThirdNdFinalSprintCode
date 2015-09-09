@@ -1,0 +1,18 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+	<div class="logo">
+		<img src="resources/img/webshop.jpg" alt="Webshop" title="Webshop" />
+	</div>
+
+	<h1 class="title">
+		<h:outputText value="Webshop online application" />
+	</h1>
+	<h:form>
+	 <div class="pull-right">
+		<h:commandLink styleClass="btn btn-large" value="Log out" action="#{registrationBean.logOut}" />
+		</div>	
+		</h:form>
+</ui:fragment>

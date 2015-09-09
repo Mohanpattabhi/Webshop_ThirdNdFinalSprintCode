@@ -1,0 +1,171 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+
+<ui:composition template="/layout/template.xhtml">
+<style>
+* {
+  .border-radius(0) !important;
+}
+
+#field {
+    margin-bottom:20px;
+}
+</style>
+<link type="text/css" rel="stylesheet"
+		href="resources/jquery/jquery-1.8.3.js" />
+<link type="text/css" rel="stylesheet"
+		href="resources/jquery/dynaAdd.js" />
+<!-- 	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{categoryBean.categoryIdMap}" />
+	</f:metadata> -->
+<h:outputScript>
+<!-- 		<script>
+		var counter = 1;
+		var limit = 3;
+		function addInput(divName){
+		     if (counter == limit)  {
+		          alert("You have reached the limit of adding " + counter + " inputs");
+		     }
+		     else {
+		          var newdiv = document.createElement('div');
+		          newdiv.innerHTML = "Entry " + (counter + 1) + " <br/><input type='text' name='myInputs[]'/>";
+		          document.getElementById(divName).appendChild(newdiv);
+		          counter++;
+		     }
+		}
+	 </script> -->
+</h:outputScript>
+
+
+	<ui:define name="pageTitle">
+		<h:outputText value="WebShop" />
+	</ui:define>
+
+	<ui:define name="content">
+	<h:form id="form1">
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <p:panel header="Manage Products" style="margin-bottom:10px;">
+
+        
+         <p:growl id="messages" showDetail="true"/>
+            <p:panel header="Sale Item" style="width: 400px;"> 
+           			 <f:facet name="header">  
+                       Selected Category : <h:outputText value="#{productBean.selectedCategoryName}" /> 
+                    </f:facet>
+                <p:panelGrid columns="2">
+                
+                     
+                    <h:outputLabel for="name" value="Product Name: " />
+                    <p:inputText  value="#{productBean.name}"/>
+                    
+                    <h:outputLabel for="code" value="Price: " />
+                    <p:inputText  value="#{productBean.price}"/>
+                    
+                    
+                    <h:outputLabel for="description" value="Description: " />
+                    <p:inputText  value="#{productBean.description}"/>
+
+                    <f:facet name="footer">
+                        <h:commandButton value="Add Product" action="#{productBean.addAction}"/>
+                    </f:facet>
+                </p:panelGrid>
+                <p:spacer height="30px;"/>
+                
+                <p:dataTable value="#{productBean.productEnitites}" var="product"  widgetVar="50" style="width: 60px;" editable="true">
+                    <f:facet name="header">  
+                        Product List  
+                    </f:facet>
+                    <p:ajax event="rowEdit" listener="#{productBean.onEdit}" update=":form1:messages" />  
+                    <p:ajax event="rowEditCancel" listener="#{productBean.onCancel}" update=":form1:messages" /> 
+                     <p:column rendered="false">
+                        <f:facet name="header">  
+                            <h:outputText value="Category Name" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{product.productId}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{product.productId}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Price" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{product.price}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{product.price}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Category Name" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{product.name}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{product.name}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                   <!--  <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Category Code" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{category.code}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{category.code}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+                    
+                    
+                    <p:column>
+                        <f:facet name="header">  
+                            <h:outputText value="Category Description" />  
+                        </f:facet>
+                        <p:cellEditor>  
+                            <f:facet name="output">  
+                                <h:outputText value="#{category.description}" />  
+                            </f:facet>  
+                            <f:facet name="input">  
+                                <p:inputText value="#{category.description}" style="width:100%"/>  
+                            </f:facet>  
+                        </p:cellEditor> 
+                    </p:column>
+  -->
+                       <p:column headerText="Options" style="width:50px">  
+                        <p:rowEditor />  
+                    </p:column> 
+                </p:dataTable>
+            </p:panel>
+        
+ 
+        <!-- <p:commandButton value="Submit" update="msgs" actionListener="#{dropdownView.displayLocation}" icon="ui-icon-check" /> -->
+    </p:panel>
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

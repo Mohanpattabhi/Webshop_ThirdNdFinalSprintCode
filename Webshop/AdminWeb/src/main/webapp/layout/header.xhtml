@@ -1,0 +1,31 @@
+<ui:fragment xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="logo">
+		<img src="resources/img/webshop.jpg" alt="Webshop" title="Webshop" />
+	</div>
+
+	<h1 class="title">
+		<h:outputText value="Webshop online application" />
+	</h1>
+	<div style="padding-left:150px">
+	<h3 class="title">
+		<h:outputText value="Admin Console" />
+	</h3>
+    </div>
+	<h:form>
+<div style="padding-top:75px">
+	<p:tabMenu  activeIndex="2">
+    <p:menuitem value="Category" outcome="addCategory" icon="ui-icon-star">
+        <f:param name="i" value="0" />
+    </p:menuitem>
+    <p:menuitem value="Product" outcome="selectCategory" icon="ui-icon-star">
+        <f:param name="i" value="1" />
+    </p:menuitem>
+    </p:tabMenu>
+</div>
+	</h:form>
+</ui:fragment>

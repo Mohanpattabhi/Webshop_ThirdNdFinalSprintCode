@@ -1,0 +1,71 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+
+<ui:composition template="/layout/template.xhtml">
+<style>
+* {
+  .border-radius(0) !important;
+}
+
+#field {
+    margin-bottom:20px;
+}
+</style>
+<link type="text/css" rel="stylesheet"
+		href="resources/jquery/jquery-1.8.3.js" />
+<link type="text/css" rel="stylesheet"
+		href="resources/jquery/dynaAdd.js" />
+<!-- 	<f:metadata>
+		<f:event type="preRenderView"
+			listener="#{categoryBean.categoryIdMap}" />
+	</f:metadata> -->
+<h:outputScript>
+<!-- 		<script>
+		var counter = 1;
+		var limit = 3;
+		function addInput(divName){
+		     if (counter == limit)  {
+		          alert("You have reached the limit of adding " + counter + " inputs");
+		     }
+		     else {
+		          var newdiv = document.createElement('div');
+		          newdiv.innerHTML = "Entry " + (counter + 1) + " <br/><input type='text' name='myInputs[]'/>";
+		          document.getElementById(divName).appendChild(newdiv);
+		          counter++;
+		     }
+		}
+	 </script> -->
+</h:outputScript>
+
+
+	<ui:define name="pageTitle">
+		<h:outputText value="WebShop" />
+	</ui:define>
+
+	<ui:define name="content">
+	<h:form id="form1">
+ 
+    <p:panel header="Select Category for Product" style="margin-bottom:10px;">
+        <h:panelGrid columns="2" cellpadding="5">
+            <p:outputLabel for="Category" value="Category : " />
+            <p:selectOneMenu  id="Category" value="#{productBean.selectedCategory}" style="width:150px">
+                <f:selectItem itemLabel="Select Category " itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{categoryBean.categoryIdMap}" />
+            </p:selectOneMenu>
+ </h:panelGrid>
+     
+ </p:panel>
+        
+ 
+        <h:commandButton id="button" value="Add Products"  action="#{productBean.doDisplay}" />
+ 
+</h:form>
+</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,16 @@
+com\sogeti\webshop\model\User.class
+com\sogeti\webshop\model\ProductOrders.class
+com\sogeti\webshop\dao\ProductDAO.class
+com\sogeti\webshop\model\Orders.class
+com\sogeti\webshop\model\Product.class
+com\sogeti\webshop\model\OrderBean.class
+com\sogeti\webshop\business\RegistrationService.class
+com\sogeti\webshop\business\impl\ProductServiceImpl.class
+com\sogeti\webshop\business\utitlity\Constants.class
+com\sogeti\webshop\dao\impl\RegistrationDAOImpl.class
+com\sogeti\webshop\business\impl\RegistrationServiceImpl.class
+com\sogeti\webshop\business\ProductService.class
+com\sogeti\webshop\model\Category.class
+com\sogeti\webshop\dao\impl\ProductDAOImpl.class
+com\sogeti\webshop\dao\RegistrationDAO.class
+com\sogeti\webshop\model\UserRole.class
